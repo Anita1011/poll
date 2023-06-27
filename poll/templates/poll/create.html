@@ -1,0 +1,180 @@
+{% extends "poll/base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}Create Poll{% endblock %}
+
+{% block main %}
+<head>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    body{background-color: #F5F5DC;}
+    *{font-size: 20px; font-family: 'monaco';}
+	body{background-color: #F5F5DC;}
+.panel.panel-default {
+    background-color:#E9967A;
+}
+
+
+.form-control {
+    display: block;
+    width: 80%;
+    height: 34px; 
+    padding: 5px 8px;
+    font-size: 15px;
+    color: #121212;
+    background-color: #FFF8DC;
+    background-image: none;
+    border: 1px solid #2c70a1;
+    border-radius: 8px;
+}
+    .btn  {
+  padding: 15px 25px;
+  font-size: 18px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+ 
+  margin-bottom: 15px;
+  background-color: #FFF8DC;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 5px #d9d1d1;
+  position: relative;
+  /* left: 50px; */
+  margin-left: 38%;
+}
+
+.btn :hover {background-color: #FFF8DC}
+
+.btn :active {
+  background-color: #FFF8DC;
+  box-shadow: 0 8px #666;
+  transform: translateY(4px);
+}
+div#sub_button{
+	display:contents;
+}
+</style></head>
+<br>
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Create A New Poll</h3>
+            </div>
+                
+            <form method="POST" onsubmit="return validateForm()">
+                {% csrf_token %}
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label for="question" >Enter Poll Question</label>
+                                {% render_field form.question class="form-control  " id="username"  rows="5" %}
+					  <span id = "username_error"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <div class="form-group" >
+                                <label for="option1"  >Option 1</label>
+                                {% render_field form.option_one class="form-control" id="password1"  %}
+					 <span id = "password1_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="option2">Option 2</label>
+                                {% render_field form.option_two class="form-control" id="password2"%} 
+					  <span id = "password2_error"></span>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="form-group">
+                                <label for="option3">Option 3</label>
+                                {% render_field form.option_three class="form-control" id="password3" %}
+					  <span id = "password3_error"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <hr />
+                        <div class="col-lg-4" id="sub_button">
+                            <button type="submit" class="btn btn-info" >Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+<script>
+		var username = document.getElementById("username");
+		var password1 = document.getElementById("password1");
+		var password2 = document.getElementById("password2");
+		var password3 = document.getElementById("password3");
+	
+	
+		username.addEventListener("blur", checkUsername);
+		password1.addEventListener("blur", checkPassword1);
+		password2.addEventListener("blur", checkPassword2);
+		password3.addEventListener("blur", checkPassword3);
+		
+
+		function checkUsername() {
+			var usernameValue = username.value.trim();
+			if (usernameValue.length < 5 || usernameValue.length > 20) {
+				document.getElementById("username_error").innerHTML = "Question should be between 5 and 20 characters.";
+				return false;
+			} else {
+				document.getElementById("username_error").innerHTML = "";
+				return true;
+			}
+		}
+
+		function checkPassword1() {
+			var password1Value = password1.value.trim();
+			if (password1Value.length < 3) {
+				document.getElementById("password1_error").innerHTML = "Options should be at least 3 characters.";
+				return false;
+			} else {
+				document.getElementById("password1_error").innerHTML = "";
+				return true;
+			}
+		}
+		function checkPassword2() {
+			var password2Value = password2.value.trim();
+			if (password2Value.length < 3) {
+				document.getElementById("password2_error").innerHTML = "Options should be at least 3 characters.";
+				return false;
+			} else {
+				document.getElementById("password2_error").innerHTML = "";
+				return true;
+			}
+		}
+		function checkPassword3() {
+			var password3Value = password3.value.trim();
+			if (password3Value.length < 3) {
+				document.getElementById("password3_error").innerHTML = "Options should be at least 3 characters.";
+				return false;
+			} else {
+				document.getElementById("password3_error").innerHTML = "";
+				return true;
+			}
+		}
+		
+
+		function validateForm() {
+			var isUsernameValid = checkUsername();
+			var isPassword1Valid = checkPassword1();
+			var isPassword2Valid = checkPassword2();
+			var isPassword3Valid = checkPassword3();
+		
+			return isUsernameValid && isPassword1Valid && isPassword2Valid && isPassword3Valid;
+		}
+	</script>
+        </div>
+    </div>
+</div>
+{% endblock %}

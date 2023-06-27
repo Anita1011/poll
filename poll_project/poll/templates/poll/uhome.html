@@ -1,0 +1,27 @@
+{% extends 'poll/base.html' %}
+{% block main %}
+<head>
+	<style>
+    		body{background-color: Aquamarine;}
+    		*{font-size: 20px; font-family: 'monaco';}
+		input.pw1 {
+  			  border-radius: 5px;
+		}
+		input[type="submit"] {
+    			border-radius: 5px;
+    			background-color: darkturquoise;
+		}
+	</style>
+</head>
+	<h1>Login Page by Anita</h1>
+	<br>
+	<form method="POST">
+	{% csrf_token %}
+		<input type="text" name="un" placeholder="enter username" class="pw1"  required>
+	<br><br>
+		<input type="password" name="pw" placeholder="enter password" class="pw1" required>
+	<br><br>
+		<input type="submit" value="Login"  />
+	</form>
+	{{ msg }}
+{% endblock %}

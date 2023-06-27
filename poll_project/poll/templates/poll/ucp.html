@@ -1,0 +1,71 @@
+{% extends 'poll/base.html' %}
+{% block main %}
+<head>
+	<style>
+    		body{background-color: Aquamarine;}
+    		*{font-size: 20px; font-family: 'monaco';}
+		.change-passwor{
+			border-radius:5px;
+		}
+		.change-password{
+			border-radius:5px;
+			background-color:DarkTurquoise;
+		}
+		input[type="submit"] {
+    			border-radius: 5px;
+    			background-color: darkturquoise;
+		}
+	</style>
+</head>
+	<h1>Change Password </h1>
+		<form method="POST" onsubmit="return validateForm()">
+		{% csrf_token %}
+			<input type="password" name="pw1" id="password1" placeholder="enter new password" class="change-passwor" required>
+		<br>
+		<span id = "password1_error"></span>
+		<br>
+			<input type="password" name="pw2" id="password2" placeholder="confirm password" class="change-passwor" required>
+		<br>
+		<span id = "password2_error"></span>
+		<br>
+			<input type="submit" value="Change Password" class="change-password" />
+		</form>
+		<script>
+		var password1 = document.getElementById("password1");
+		var password2 = document.getElementById("password2");
+
+		password1.addEventListener("blur", checkPassword1);
+		password2.addEventListener("blur", checkPassword2);
+
+
+		function checkPassword1() {
+			var password1Value = password1.value.trim();
+			if (password1Value.length < 8) {
+				document.getElementById("password1_error").innerHTML = "Password should be at least 8 characters.";
+				return false;
+			} else {
+				document.getElementById("password1_error").innerHTML = "";
+				return true;
+			}
+		}
+
+		function checkPassword2() {
+			var password2Value = password2.value.trim();
+			if (password1.value !== password2Value) {
+				document.getElementById("password2_error").innerHTML = "Passwords do not match.";
+				return false;
+			} else {
+				document.getElementById("password2_error").innerHTML = "";
+				return true;
+			}
+		}
+
+		function validateForm() {
+			var isPassword1Valid = checkPassword1();
+			var isPassword2Valid = checkPassword2();
+
+			return isPassword1Valid && isPassword2Valid;
+		}
+		</script>
+		{{ msg }}
+{% endblock %}

@@ -1,0 +1,215 @@
+<html>
+
+<head>
+    <title>Poll App By Kishan</title>
+    <meta charset="utf-8">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+
+    <style>
+        /* .navbar-default,
+        .btn,
+        .form-control,
+        .panel {
+            border-radius: 1;
+        }
+
+        .navbar-default {
+            background-color: rgba(12, 12, 23, 0.7);
+            border-color: rgba(245, 245, 220, .6);
+            box-shadow: 0px 3px 3px 0px #ddd;
+            font-size: large;
+        }
+
+        .navbar-default .navbar-nav>li>a {
+            color: #fff;
+        }
+
+        .navbar-default .navbar-nav>li>a:hover {
+            color: rgb(244, 248, 4);
+        }
+
+        .navbar-default .navbar-brand:hover {
+            color: rgb(244, 248, 4);
+        }
+
+        .navbar-default .navbar-brand {
+            color: #fdf0f0;
+        }
+
+        .navbar-default .navbar-nav>.active>a,
+        .navbar-default .navbar-nav>.active>a:focus,
+        .navbar-default .navbar-nav>.active>a:hover {
+            background-color: rgba(1, 6, 255, 0.7);
+            border-bottom: 4px solid #ddd;
+        }
+
+        .panel-default>.panel-heading {
+            color: rgb(255, 255, 255);
+            background-color: rgba(1, 6, 255, 0.7);
+            border-color: rgba(245, 245, 220, .6);
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+            font-size: large;
+        }
+
+        .panel-footer {
+            background-color: rgba(1, 6, 255, 0.7);
+            border-color: rgba(245, 245, 220, .4);
+            font-size: large;
+            color: #fff;
+        }
+
+        .panel {
+            box-shadow: 0px 3px 3px 0px #ddd;
+        }
+
+        a.navbar-brand,
+        .panel-title {
+            font-weight: bolder;
+        }
+
+        .navbar-toggle {
+            border-color: #fff !important;
+        }
+
+        .navbar-toggle .icon-bar {
+            background-color: #fff !important;
+        }
+
+
+        .nav-bar {
+            background-color: #000;
+        }
+
+        .nav-bar a {
+            color: rgb(243, 242, 240);
+            text-decoration: None;
+            margin: 40px;
+            font-family: Felix Titling;
+            font-size: 30px;
+        }
+
+        .panel-default>.panel-heading {
+            color: #333;
+            background-color: rgba(245, 245, 220, .7);
+            border-color: rgba(245, 245, 220, .6);
+            border-top-left-radius: 0;
+            border-top-right-radius: 0;
+        }
+
+        .panel {
+            background-color: #7ac2b9
+        }
+
+        body {
+            background-color: lightcyan;
+        }
+
+        .panel-footer {
+            background-color: rgba(245, 245, 220, .5);
+            border-color: rgba(245, 245, 220, .4);
+        }
+
+        .panel {
+            box-shadow: 0px 3px 3px 0px #ddd;
+        }
+
+        a.navbar-brand,
+        .panel-title {
+            font-weight: bolder;
+        }
+
+        @media only screen and (max-width: 750px) {
+            .nav-bar a {
+                color: rgb(243, 242, 240);
+                text-decoration: None;
+                margin: 22px;
+                font-family: Felix Titling;
+                font-size: 17px;
+            }
+
+            .navbar-toggle {
+                position: relative;
+                float: right;
+                padding: 9px 10px;
+                margin-right: 15px;
+                margin-top: 8px;
+                margin-bottom: 8px;
+                background-color: transparent;
+                background-image: none;
+                border: 1px solid transparent;
+                border-radius: 4px;
+                margin-top: 29px;
+            }
+        } */
+        
+    </style>
+</head>
+
+<body>
+    <center>
+        <!-- <div class="nav-bar">
+<a href="{% url 'home' %}">Poll Application</a>
+{% if user.is_authenticated %}
+	<a href="{% url 'home' %}">Polls</a>
+	<a href="{% url 'create' %}">Create</a>
+	<a href="{% url 'ucp' %}">Change Password</a>
+	<a href="{% url 'ulogout' %}">Logout</a>
+{% else %}
+	<a href="{% url 'uhome' %}">Login</a>
+	<a href="{% url 'usignup' %}">Signup</a>
+{% endif %}
+</div> -->
+        <header>
+            {% if user.is_authenticated %}
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="{% url 'home' %}">Poll Application</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+                        <ul class="navbar-nav mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                            </li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'create' %}">Create</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'ucp' %}">Change Password</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{% url 'ulogout' %}">Logout</a></li>
+
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+            {% else %}
+            <ul class="nav justify-content-center">
+                <li class="nav-item border">
+                    <a style="color: black;" class="nav-link" aria-current="page" href="{% url 'uhome' %}">Login</a>
+                </li>
+                <li class="nav-item border">
+                    <a style="color: black;" class="nav-link" href="{% url 'usignup' %}">Signup</a>
+                </li>
+            </ul>
+            <hr class="mt-0">
+            {% endif %}
+        </header>
+        {% block main %}{% endblock %}
+
+</body>
+
+</html>

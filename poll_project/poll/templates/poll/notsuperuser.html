@@ -1,0 +1,27 @@
+{% extends "poll/base.html" %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block main %}
+<head>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+    *{font-size:20px; font-family: 'monaco';}
+
+</style>
+</head>
+<br>
+<div class="row justify-content-center">
+    <div class="col-lg-8 col-lg-offset-2">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h1 class="panel-title">Sorry {{ user.username }} !!<br> You are not a Authorized Person.</h1>
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+    
+{% endblock %}
